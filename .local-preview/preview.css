@@ -1,0 +1,8 @@
+/* Local preview only: minimal replacements for unavailable plugin navigation. */
+.preview-brand { display: block; color: #c8192e; font: 500 16px/1.1 "SF Pro Display", Arial, sans-serif; }
+header .mega-menu { display: flex; flex-wrap: wrap; gap: 15px; padding: 0; margin: 0; list-style: none; }
+header .mega-menu > li { margin: 0; padding: 0; list-style: none; }
+header .mega-sub-menu, header .mega-menu-toggle { display: none; }
+header #mega-menu-item-5494 { display: none; }
+header .mega-menu a { font: 400 14px/1.2 "SF Pro Display", Arial, sans-serif; }
+@media (max-width: 600px) { header .mega-menu { gap: 8px 12px; } header .mega-menu a { font-size: 12px; } }
