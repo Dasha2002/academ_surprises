@@ -83,7 +83,7 @@ if ( ! function_exists( 'twentytwentyfive_enqueue_styles' ) ) :
 			'twentytwentyfive-style',
 			get_parent_theme_file_uri( 'style.css' ),
 			array(),
-			wp_get_theme()->get( 'Version' )
+			(string) filemtime( get_parent_theme_file_path( 'style.css' ) )
 		);
 	}
 endif;

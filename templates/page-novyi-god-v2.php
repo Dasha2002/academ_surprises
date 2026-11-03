@@ -36,13 +36,26 @@ $asny_footer = ob_get_clean();
 					<p class="asny-v2-kicker">Академия сюрпризов · Пермь</p><h1 id="asny-title">Новогодние подарки <span>с вашим дизайном</span></h1>
 					<p class="asny-hero-term">Изготовление от 1 дня</p>
 					<p class="asny-intro">Создадим персональные подарки для близких, друзей, коллег и партнёров. Нанесём любимую фотографию, имя, поздравление или логотип компании.</p>
-					<ul class="asny-benefits">
+					<!-- <ul class="asny-benefits">
 						<li>От 1 подарка до тиража</li>
 						<li>Поможем с дизайном</li>
 						<li>Сделаем от 1 дня</li>
-					</ul>
+					</ul> -->
 					<a href="#asny-quiz" class="asny-button" data-asny-start data-asny-source="Первый экран">Подобрать подарок и узнать стоимость</a>
-					<p class="asny-note">Поможем выбрать изделие и рассчитаем стоимость вашего заказа.</p>
+				</div>
+				<div class="asny-hero-products" role="group" aria-label="Примеры наших работ">
+					<figure class="asny-hero-product asny-hero-product-shirt">
+						<img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/new-year/shirt-work.jpg' ) ); ?>" alt="Белые футболки с индивидуальным цветным принтом" width="600" height="451" loading="eager" decoding="async">
+						<figcaption>Футболки с принтом</figcaption>
+					</figure>
+					<figure class="asny-hero-product asny-hero-product-mugs">
+						<img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/new-year/mugs-work.jpg' ) ); ?>" alt="Кружки с персональными иллюстрациями" width="600" height="450" loading="eager" decoding="async">
+						<figcaption>Кружки с вашим дизайном</figcaption>
+					</figure>
+					<figure class="asny-hero-product asny-hero-product-canvas">
+						<img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/new-year/canvas-work.jpg' ) ); ?>" alt="Картины на холсте по фотографиям пары и семьи" width="600" height="750" loading="eager" decoding="async">
+						<figcaption>Картины на холсте</figcaption>
+					</figure>
 				</div>
 			</div>
 		</section>
@@ -123,6 +136,7 @@ $asny_footer = ob_get_clean();
 
 			<section id="asny-cta" class="asny-v2-cta asny-section asny-container" aria-labelledby="asny-cta-title">
 				<div class="asny-cta-card">
+					<div class="asny-cta-garlands" aria-hidden="true"></div>
 					<div class="asny-cta-copy"><h2 id="asny-cta-title">Ещё выбираете подарок?</h2><p>Расскажите, кому хотите сделать сюрприз. Поможем выбрать изделие, обсудим дизайн и рассчитаем стоимость.</p><a href="#asny-quiz" class="asny-button" data-asny-start data-asny-source="Подбор в конце страницы">Подобрать подарок</a><noscript><p>Позвоните нам: <a href="tel:+79519369490">8-951-936-94-90</a>.</p></noscript></div>
 					<div class="asny-cta-art" aria-hidden="true"><img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/new-year/v2/gift.png' ) ); ?>" alt="" width="1280" height="1280" loading="lazy" decoding="async"></div>
 					<img class="asny-cta-bauble" src="<?php echo esc_url( get_theme_file_uri( 'assets/images/new-year/v2/bauble.png' ) ); ?>" alt="" aria-hidden="true" width="1280" height="1280" loading="lazy" decoding="async">
