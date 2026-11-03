@@ -3,6 +3,114 @@
   'use strict';
   const root = document.querySelector('[data-asny-root]');
   if (!root) return;
+  // The footer accepts either email or phone; telephone-only fields always use +7.
+  const phoneInputs = document.querySelectorAll('input[type="tel"], .asny-footer-form input[name="text-944"]');
+  function formatRussianPhone(raw) {
+    let digits = raw.replace(/\D/g, '');
+    if (!digits) return '';
+    if (/^[78]/.test(digits)) digits = digits.slice(1);
+    digits = digits.slice(0, 10);
+    let result = '+7';
+    if (digits.length) result += ' (' + digits.slice(0, 3);
+    if (digits.length >= 3) result += ')';
+    if (digits.length > 3) result += ' ' + digits.slice(3, 6);
+    if (digits.length > 6) result += '-' + digits.slice(6, 8);
+    if (digits.length > 8) result += '-' + digits.slice(8, 10);
+    return result;
+  }
+  phoneInputs.forEach(input => {
+    const mixedContact = input.type !== 'tel';
+    const isEmail = raw => mixedContact && /[a-zа-яё@]/i.test(raw);
+    function applyPhoneMask() {
+      const raw = input.value;
+      if (isEmail(raw)) return;
+      const caret = input.selectionStart ?? raw.length;
+      const atEnd = caret === raw.length;
+      const prefixAdded = /^[78]/.test(raw.replace(/\D/g, '')) ? 0 : 1;
+      const digitPosition = raw.slice(0, caret).replace(/\D/g, '').length + prefixAdded;
+      const formatted = formatRussianPhone(raw);
+      input.value = formatted;
+      let position = formatted.length;
+      if (!atEnd && formatted) {
+        let count = 0;
+        position = 0;
+        while (position < formatted.length && count < digitPosition) {
+          if (/\d/.test(formatted[position])) count += 1;
+          position += 1;
+        }
+      }
+      input.setSelectionRange(position, position);
+    }
+    if (!mixedContact) {
+      input.placeholder = '+7 (___) ___-__-__';
+      input.maxLength = 18;
+      input.autocomplete = 'tel';
+      input.inputMode = 'tel';
+    }
+    input.addEventListener('input', applyPhoneMask);
+    input.addEventListener('change', applyPhoneMask);
+    input.addEventListener('keydown', event => {
+      if (!['Backspace', 'Delete'].includes(event.key) || event.ctrlKey || event.metaKey || event.altKey || isEmail(input.value)) return;
+      const start = input.selectionStart;
+      const end = input.selectionEnd;
+      if (start !== end || start === null) return;
+      const direction = event.key === 'Backspace' ? -1 : 1;
+      let index = direction < 0 ? start - 1 : start;
+      if (index < 2 || index >= input.value.length || /\d/.test(input.value[index])) return;
+      while (index >= 2 && index < input.value.length && !/\d/.test(input.value[index])) index += direction;
+      event.preventDefault();
+      if (index < 2 || index >= input.value.length) return;
+      input.value = input.value.slice(0, index) + input.value.slice(index + 1);
+      input.setSelectionRange(index, index);
+      applyPhoneMask();
+      input.dispatchEvent(new Event('input', { bubbles: true }));
+    });
+    if (input.value) applyPhoneMask();
+  });
+  const header = document.querySelector('[data-asny-header]');
+  if (header) {
+    const toggle = header.querySelector('[data-asny-menu-toggle]');
+    const navigation = header.querySelector('nav');
+    const disclosures = Array.from(header.querySelectorAll('[data-asny-header-disclosure]'));
+    const compactHeader = window.matchMedia('(max-width: 1199px)');
+    function closeHeaderMenu() {
+      header.removeAttribute('data-menu-open');
+      toggle.setAttribute('aria-expanded', 'false');
+      header.querySelector('[data-asny-menu-label]').textContent = 'Меню';
+      disclosures.forEach(item => { item.open = false; });
+    }
+    header.setAttribute('data-menu-ready', '');
+    toggle.hidden = false;
+    toggle.addEventListener('click', () => {
+      const open = !header.hasAttribute('data-menu-open');
+      if (!open) { closeHeaderMenu(); return; }
+      header.setAttribute('data-menu-open', '');
+      toggle.setAttribute('aria-expanded', 'true');
+      header.querySelector('[data-asny-menu-label]').textContent = 'Закрыть';
+    });
+    disclosures.forEach(item => item.addEventListener('toggle', () => {
+      if (item.open) disclosures.forEach(other => { if (other !== item) other.open = false; });
+    }));
+    document.addEventListener('click', event => {
+      if (!header.contains(event.target)) closeHeaderMenu();
+    });
+    header.addEventListener('keydown', event => {
+      if (event.key !== 'Escape') return;
+      const open = disclosures.find(item => item.open);
+      if (open) { open.open = false; open.querySelector('summary').focus(); }
+      else if (compactHeader.matches && header.hasAttribute('data-menu-open')) {
+        closeHeaderMenu();
+        toggle.focus();
+      }
+    });
+    navigation.addEventListener('click', event => {
+      if (event.target.closest('a') && compactHeader.matches) closeHeaderMenu();
+    });
+    compactHeader.addEventListener('change', () => {
+      if (navigation.contains(document.activeElement)) toggle.focus();
+      closeHeaderMenu();
+    });
+  }
   const quiz = root.querySelector('[data-asny-form="quiz"]');
   const bridge = root.querySelector('[data-asny-bridge] .wpcf7');
   const contact = bridge?.querySelector('form');
@@ -182,7 +290,7 @@
       if (!form.reportValidity()) return;
       const phone = value(form, 'phone').trim();
       const digits = phone.replace(/\D/g, '');
-      if (!/^\+?[\d\s()\-]+$/.test(phone) || digits.length < 10 || digits.length > 15) {
+      if (!/^7\d{10}$/.test(digits)) {
         setError(form, 'Проверьте номер телефона: укажите от 10 до 15 цифр.');
         field(form, 'phone').focus();
         return;
