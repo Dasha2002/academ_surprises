@@ -1,0 +1,11 @@
+# Адаптивные фоны первого экрана
+
+Созданы встроенным ImageGen по исходному hero.jpg. PNG сохранены как оригиналы, JPEG — облегчённые копии для страницы. До 767 px используется hero-phone.jpg, от 768 до 1024 px — hero-tablet.jpg. Режим background-size: cover сохраняет пропорции изображений.
+
++### hero-phone.png / hero-phone.jpg
+
+Adapt the attached Christmas background for a portrait mobile phone, 9:16 composition. Preserve the exact dark teal forest green background and elegant flat hand-painted botanical illustration style, ivory and gold baubles, fir sprigs, eucalyptus leaves, red berries and tiny restrained gold stars. Recompose the border decor for the new aspect ratio; DO NOT stretch or squash objects from the reference. Keep all objects naturally proportioned. This is a background only: no text, no buttons, no mockup, no lettering, no watermarks. Make the central 78 percent of the width entirely empty dark green for a long centered heading, paragraph and CTA. Decoration concentrated in modest corner clusters and very narrow outside edges. Tall quiet central area occupying 80 percent of height; light foliage in upper corners and fuller foliage at the very bottom; small ivory baubles near top edge only. Seamless solid dark green centre with subtle paper texture. Return the actual finished flat image in the requested aspect ratio.
+
+### hero-tablet.png / hero-tablet.jpg
+
+Adapt the attached Christmas background for a tablet, square 1:1 composition. Preserve the exact dark teal forest green background and elegant flat hand-painted botanical illustration style, ivory and gold baubles, fir sprigs, eucalyptus leaves, red berries and tiny restrained gold stars. Recompose the border decor for the new aspect ratio; DO NOT stretch or squash objects from the reference. Keep all objects naturally proportioned. This is a background only: no text, no buttons, no mockup, no lettering, no watermarks. Make the central 78 percent of the width entirely empty dark green for a long centered heading, paragraph and CTA. Decoration concentrated in modest corner clusters and very narrow outside edges. Large calm central area; balanced compact decor in four corners, sparse side edges, safe empty space for content. Seamless solid dark green centre with subtle paper texture. Return the actual finished flat image in the requested aspect ratio.

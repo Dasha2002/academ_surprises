@@ -5,7 +5,7 @@ $uri = parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH);
 if ($uri !== '/' && is_file($root . $uri)) return false;
 if ($uri === '/mobile') {
  $w = max(320, min(1440, (int)($_GET['width'] ?? 390)));
- echo '<!doctype html><html><head><title>Мобильная версия — ' . $w . ' px</title></head><body style="margin:0;background:#e0e2de;display:flex;justify-content:center"><iframe title="Мобильный просмотр" src="/" style="width:' . $w . 'px;height:900px;border:0;background:white"></iframe></body></html>';
+ echo '<!doctype html><html><head><title>Мобильная версия — ' . $w . ' px</title></head><body style="margin:0;background:#e0e2de;display:flex;justify-content:center"><iframe title="Мобильный просмотр" src="' . (2 === (int) ($_GET['variant'] ?? 1) ? '/variant-2/' : '/') . '" style="width:' . $w . 'px;height:900px;border:0;background:white"></iframe></body></html>';
  return;
 }
 if (str_starts_with($uri, '/_previewfonts/')) {
@@ -15,6 +15,7 @@ if (str_starts_with($uri, '/_previewfonts/')) {
  readfile(__DIR__ . '/fonts/' . $font);
  return;
 }
+define('ASNY_NEW_YEAR_VARIANT', trim($uri, '/') === 'variant-2' ? 2 : 1);
 define('ABSPATH', $root . '/');
 $live = file_get_contents(__DIR__ . '/site-snapshot.html');
 foreach (array('sf-pro-display-regular.otf','sf-pro-display-medium.otf','bebasneuecyrillic.ttf') as $font) {
@@ -54,6 +55,7 @@ function wp_head() {
  preg_match_all('~@font-face\s*\{(?=[^}]*\/_previewfonts\/)[^}]*\}~', $live, $fonts); echo '<style>' . implode("\n", $fonts[0]) . '</style>'; echo '<title>Новый год — локальная проверка</title>' . implode("\n", $styles[0]);
  echo '<link rel="stylesheet" href="/style.css"><link rel="stylesheet" href="/assets/css/new-year.css">';
  echo '<link rel="stylesheet" href="/.local-preview/preview.css">';
+ if (2 === asny_variant()) echo '<link rel="stylesheet" href="/assets/css/new-year-v2.css">';
 }
 function wp_footer() {
  echo <<<'HTML'
@@ -71,8 +73,9 @@ document.addEventListener('submit', function(event) {
  const bridge = document.querySelector('#asny-preview-cf7');
  setTimeout(() => bridge.dispatchEvent(new CustomEvent(({success:'wpcf7mailsent',failure:'wpcf7mailfailed',spam:'wpcf7spam',invalid:'wpcf7invalid'})[mode], {bubbles:true})), 150);
 }, true);
-</script><script src="/assets/js/new-year.js"></script>
+</script>
 HTML;
+ echo '<script src="/assets/js/new-year' . (2 === asny_variant() ? '-v2' : '') . '.js"></script>';
 }
 require ABSPATH . 'inc/new-year.php';
-require ABSPATH . 'templates/page-novyi-god.php';
+require ABSPATH . (2 === asny_variant() ? 'templates/page-novyi-god-v2.php' : 'templates/page-novyi-god.php');
