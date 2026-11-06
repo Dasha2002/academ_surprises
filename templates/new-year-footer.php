@@ -2,6 +2,9 @@
 /** Variant 2 footer: rearrange the stored content, preserving the native CF7 form. */
 defined( 'ABSPATH' ) || exit;
 
+// Remove the studio credit from this variant, including the no-DOM fallback.
+$asny_footer = preg_replace( '~(?:<br\s*/?>\s*)?<a\b[^>]*>\s*(?:<mark\b[^>]*>\s*)?Сделано\s+в\s+атма\s*(?:</mark>\s*)?</a>~iu', '', $asny_footer );
+
 // Keep the stored footer available if the host lacks the DOM extension.
 if ( ! class_exists( 'DOMDocument' ) ) {
 	echo $asny_footer;

@@ -76,7 +76,7 @@
     function closeHeaderMenu() {
       header.removeAttribute('data-menu-open');
       toggle.setAttribute('aria-expanded', 'false');
-      header.querySelector('[data-asny-menu-label]').textContent = 'Меню';
+      toggle.setAttribute('aria-label', 'Открыть меню');
       disclosures.forEach(item => { item.open = false; });
     }
     header.setAttribute('data-menu-ready', '');
@@ -86,7 +86,7 @@
       if (!open) { closeHeaderMenu(); return; }
       header.setAttribute('data-menu-open', '');
       toggle.setAttribute('aria-expanded', 'true');
-      header.querySelector('[data-asny-menu-label]').textContent = 'Закрыть';
+      toggle.setAttribute('aria-label', 'Закрыть меню');
     });
     disclosures.forEach(item => item.addEventListener('toggle', () => {
       if (item.open) disclosures.forEach(other => { if (other !== item) other.open = false; });

@@ -61,7 +61,7 @@ $asny_footer = ob_get_clean();
 		</section>
 
 		<nav class="asny-gift-ribbon" aria-label="Быстрый выбор подарка"><div class="asny-container">
-			<?php foreach ( $asny_products as $asny_key => $asny_product ) : ?><?php if ( 'portraits' === $asny_key ) { continue; } ?><a href="#asny-quiz" data-asny-start data-asny-service="<?php echo esc_attr( $asny_key ); ?>" data-asny-source="Новогодняя лента"><?php echo esc_html( 'calendars' === $asny_key ? 'Календари' : $asny_product['short'] ); ?></a><?php endforeach; ?>
+			<?php foreach ( array( 'mugs', 'calendars', 'clothing', 'canvas' ) as $asny_key ) : ?><a href="#asny-quiz" data-asny-start data-asny-service="<?php echo esc_attr( $asny_key ); ?>" data-asny-source="Новогодняя лента"><?php echo esc_html( 'calendars' === $asny_key ? 'Календари' : $asny_products[ $asny_key ]['short'] ); ?></a><?php endforeach; ?>
 		</div></nav>
 
 		<div class="asny-v2-showcase" data-asny-parallax><div class="asny-v2-backdrop" aria-hidden="true"></div><div class="asny-v2-showcase-decor" aria-hidden="true"><?php asny_v2_ornaments( 'showcase' ); ?></div>

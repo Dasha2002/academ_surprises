@@ -39,11 +39,11 @@ if ( ! $asny_catalog_links ) {
 				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="asny-header-wordmark">академия сюрпризов<span>студия печати</span></a>
 			<?php endif; ?>
 		</div>
-		<button type="button" class="asny-menu-toggle" data-asny-menu-toggle aria-expanded="false" aria-controls="asny-header-navigation" hidden><span data-asny-menu-label>Меню</span><span class="asny-menu-lines" aria-hidden="true"></span></button>
+		<button type="button" class="asny-menu-toggle" data-asny-menu-toggle aria-label="Открыть меню" aria-expanded="false" aria-controls="asny-header-navigation" hidden><span class="asny-menu-lines" aria-hidden="true"></span></button>
 		<nav class="asny-header-nav" id="asny-header-navigation" aria-label="Основная навигация">
 			<details class="asny-header-catalog" data-asny-header-disclosure>
 				<summary>Каталог</summary>
-				<div class="asny-header-catalog-panel"><p>Печатаем ваши идеи</p><ul>
+				<div class="asny-header-catalog-panel"><ul>
 					<?php foreach ( $asny_catalog_links as $asny_url => $asny_label ) : ?>
 					<li><a href="<?php echo esc_url( $asny_url ); ?>"><?php echo esc_html( $asny_label ); ?></a></li>
 					<?php endforeach; ?>
