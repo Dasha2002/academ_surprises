@@ -28,7 +28,7 @@ $asny_footer = ob_get_clean();
 <div class="wp-site-blocks">
 	<?php require get_theme_file_path( 'templates/new-year-header.php' ); ?>
 	<main id="wp--skip-link--target" class="asny asny-v2" data-asny-root data-asny-variant="2">
-		<section class="asny-hero asny-hero-photo" aria-labelledby="asny-title">
+		<section class="asny-hero" aria-labelledby="asny-title">
 			<div class="asny-v2-backdrop" aria-hidden="true"></div>
 			<div class="asny-v2-sparks" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
 			<div class="asny-container asny-hero-grid">
@@ -36,15 +36,27 @@ $asny_footer = ob_get_clean();
 					<p class="asny-v2-kicker">Академия сюрпризов · Пермь</p><h1 id="asny-title">Новогодние подарки <span>с вашим дизайном</span></h1>
 					<p class="asny-hero-term">Изготовление от 1 дня</p>
 					<p class="asny-intro">Создадим персональные подарки для близких, друзей, коллег и партнёров. Нанесём любимую фотографию, имя, поздравление или логотип компании.</p>
-					<ul class="asny-benefits">
+					<!-- <ul class="asny-benefits">
 						<li>От 1 подарка до тиража</li>
 						<li>Поможем с дизайном</li>
 						<li>Сделаем от 1 дня</li>
-					</ul>
+					</ul> -->
 					<a href="#asny-quiz" class="asny-button" data-asny-start data-asny-source="Первый экран">Подобрать подарок и узнать стоимость</a>
-					<p class="asny-note">Поможем выбрать изделие и рассчитаем стоимость вашего заказа.</p>
 				</div>
-				<figure class="asny-hero-work"><a href="<?php echo esc_url( get_theme_file_uri( 'assets/images/new-year/mugs-work.jpg' ) ); ?>" data-asny-lightbox aria-label="Увеличить: наша печать на кружках"><img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/new-year/mugs-work.jpg' ) ); ?>" alt="Кружки с индивидуальными принтами — работа студии Академия сюрпризов" width="600" height="450" fetchpriority="high" decoding="async"></a><figcaption>Печать на кружках · работа нашей студии</figcaption></figure>
+				<div class="asny-hero-products" role="group" aria-label="Примеры наших работ">
+					<figure class="asny-hero-product asny-hero-product-shirt">
+						<img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/new-year/shirt-work.jpg' ) ); ?>" alt="Белые футболки с индивидуальным цветным принтом" width="600" height="451" loading="eager" decoding="async">
+						<figcaption>Футболки с принтом</figcaption>
+					</figure>
+					<figure class="asny-hero-product asny-hero-product-mugs">
+						<img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/new-year/mugs-work.jpg' ) ); ?>" alt="Кружки с персональными иллюстрациями" width="600" height="450" loading="eager" decoding="async">
+						<figcaption>Кружки с вашим дизайном</figcaption>
+					</figure>
+					<figure class="asny-hero-product asny-hero-product-canvas">
+						<img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/new-year/canvas-work.jpg' ) ); ?>" alt="Картины на холсте по фотографиям пары и семьи" width="600" height="750" loading="eager" decoding="async">
+						<figcaption>Картины на холсте</figcaption>
+					</figure>
+				</div>
 			</div>
 		</section>
 
