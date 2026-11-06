@@ -28,7 +28,7 @@ $asny_footer = ob_get_clean();
 <div class="wp-site-blocks">
 	<?php require get_theme_file_path( 'templates/new-year-header.php' ); ?>
 	<main id="wp--skip-link--target" class="asny asny-v2" data-asny-root data-asny-variant="2">
-		<section class="asny-hero" aria-labelledby="asny-title">
+		<section class="asny-hero asny-hero-photo" aria-labelledby="asny-title">
 			<div class="asny-v2-backdrop" aria-hidden="true"></div>
 			<div class="asny-v2-sparks" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
 			<div class="asny-container asny-hero-grid">
@@ -44,6 +44,7 @@ $asny_footer = ob_get_clean();
 					<a href="#asny-quiz" class="asny-button" data-asny-start data-asny-source="Первый экран">Подобрать подарок и узнать стоимость</a>
 					<p class="asny-note">Поможем выбрать изделие и рассчитаем стоимость вашего заказа.</p>
 				</div>
+				<figure class="asny-hero-work"><a href="<?php echo esc_url( get_theme_file_uri( 'assets/images/new-year/mugs-work.jpg' ) ); ?>" data-asny-lightbox aria-label="Увеличить: наша печать на кружках"><img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/new-year/mugs-work.jpg' ) ); ?>" alt="Кружки с индивидуальными принтами — работа студии Академия сюрпризов" width="600" height="450" fetchpriority="high" decoding="async"></a><figcaption>Печать на кружках · работа нашей студии</figcaption></figure>
 			</div>
 		</section>
 
@@ -123,9 +124,10 @@ $asny_footer = ob_get_clean();
 
 			<section id="asny-cta" class="asny-v2-cta asny-section asny-container" aria-labelledby="asny-cta-title">
 				<div class="asny-cta-card">
+					<div class="asny-cta-garland" aria-hidden="true"></div>
+					<div class="asny-cta-edge-decor" aria-hidden="true"><img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/new-year/v2/cta-corner-1.png' ) ); ?>" alt="" loading="lazy" decoding="async"><img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/new-year/v2/cta-corner-2.png' ) ); ?>" alt="" loading="lazy" decoding="async"></div>
 					<div class="asny-cta-copy"><h2 id="asny-cta-title">Ещё выбираете подарок?</h2><p>Расскажите, кому хотите сделать сюрприз. Поможем выбрать изделие, обсудим дизайн и рассчитаем стоимость.</p><a href="#asny-quiz" class="asny-button" data-asny-start data-asny-source="Подбор в конце страницы">Подобрать подарок</a><noscript><p>Позвоните нам: <a href="tel:+79519369490">8-951-936-94-90</a>.</p></noscript></div>
 					<div class="asny-cta-art" aria-hidden="true"><img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/new-year/v2/gift.png' ) ); ?>" alt="" width="1280" height="1280" loading="lazy" decoding="async"></div>
-					<img class="asny-cta-bauble" src="<?php echo esc_url( get_theme_file_uri( 'assets/images/new-year/v2/bauble.png' ) ); ?>" alt="" aria-hidden="true" width="1280" height="1280" loading="lazy" decoding="async">
 				</div>
 			</section>
 		</div>

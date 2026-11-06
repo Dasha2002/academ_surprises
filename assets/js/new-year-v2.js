@@ -222,21 +222,40 @@
   });
 
   function closeDialog(dialog) { if (dialog.open) dialog.close(); }
+  let modalScrollY = 0;
+  function lockModalPage() {
+    if (document.body.classList.contains('asny-modal-open')) return;
+    modalScrollY = window.scrollY;
+    document.body.style.setProperty('--asny-scroll-offset', -modalScrollY + 'px');
+    document.body.style.setProperty('--asny-scrollbar-gap', Math.max(0, window.innerWidth - document.documentElement.clientWidth) + 'px');
+    document.body.classList.add('asny-modal-open');
+  }
+  function unlockModalPage() {
+    if (!document.body.classList.contains('asny-modal-open')) return;
+    document.body.classList.remove('asny-modal-open');
+    document.body.style.removeProperty('--asny-scroll-offset');
+    document.body.style.removeProperty('--asny-scrollbar-gap');
+    window.scrollTo({ top: modalScrollY, behavior: 'instant' });
+  }
   function openDialog(dialog) {
     if (!dialog || typeof dialog.showModal !== 'function') return false;
     dialogs.forEach(other => { if (other !== dialog) closeDialog(other); });
+    lockModalPage();
     dialog.showModal();
-    document.body.classList.add('asny-modal-open');
+    dialog.scrollTop = 0;
     return true;
   }
   dialogs.forEach(dialog => {
+    const panel = document.createElement('div');
+    panel.className = 'asny-modal-panel';
+    panel.append(...dialog.childNodes);
+    dialog.append(panel);
     dialog.querySelector('[data-asny-close]').addEventListener('click', () => closeDialog(dialog));
     dialog.addEventListener('close', () => {
-      if (!dialogs.some(item => item.open)) document.body.classList.remove('asny-modal-open');
+      if (!dialogs.some(item => item.open)) unlockModalPage();
     });
     dialog.addEventListener('click', event => {
-      const bounds = dialog.getBoundingClientRect();
-      if (event.target === dialog && (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom)) closeDialog(dialog);
+      if (event.target === dialog) closeDialog(dialog);
     });
   });
   root.querySelectorAll('[data-asny-lightbox]').forEach(link => link.addEventListener('click', event => {

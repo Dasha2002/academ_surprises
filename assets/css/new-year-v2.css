@@ -593,10 +593,10 @@ body.asny-page-v2 .asny-header[data-theme="beige"] { --header-bg: #fffaf2; --hea
 .asny-v2 .asny-button { background: #b42c3c; border-color: #b42c3c; color: #fffaf2; }
 .asny-v2 .asny-button:hover { background: #962432; border-color: #962432; }
 .asny-v2 .asny-button:active { transform: scale(.98); }
-.asny-v2 :is(#asny-gifts, #asny-works) .asny-section-heading { display: block; text-align: left; }
-.asny-v2 :is(#asny-gifts, #asny-works) .asny-section-heading > div { max-width: 800px; margin-inline: 0; }
+.asny-v2 :is(#asny-gifts, #asny-works) .asny-section-heading { display: block; text-align: center; }
+.asny-v2 :is(#asny-gifts, #asny-works) .asny-section-heading > div {  }
 .asny-v2 :is(#asny-gifts, #asny-works) .asny-section-heading h2 { font-size: clamp(32px, 3.5vw, 46px); }
-.asny-v2 :is(#asny-gifts, #asny-works) .asny-section-heading > p { max-width: 65ch; margin: 20px 0 0; font-size: 20px; line-height: 1.6; color: #4d6054; }
+.asny-v2 :is(#asny-gifts, #asny-works) .asny-section-heading > p { max-width: 65ch; font-size: 20px; line-height: 1.6; color: #4d6054; }
 .asny-v2 #asny-gifts .asny-product h3 { padding: 24px 24px 0; font-size: 26px; font-weight: 600; line-height: 1.25; }
 .asny-v2 #asny-gifts .asny-product:nth-child(-n+2) h3 { font-size: 28px; }
 .asny-v2 #asny-gifts .asny-product > p { padding: 16px 24px 0; font-size: 18px; line-height: 1.6; color: #4d6054; }
@@ -823,6 +823,52 @@ body.asny-page-v2 .asny-seasonal-footer { margin: 0 !important; padding: 32px 0 
   .asny-footer-details { grid-template-columns: minmax(0, 1fr); }
 }
 
+/* Photo-led hero and a quieter garland for the final invitation. */
+.asny-v2 .asny-hero-photo { min-height: 0; padding: 76px 0 64px; background: #f4f1e8; color: #203b32; }
+.asny-v2 .asny-hero-photo > .asny-v2-backdrop { display: none; }
+.asny-v2 .asny-hero-photo .asny-hero-grid { display: grid; grid-template-columns: 1.08fr 1fr; align-items: center; gap: 64px; max-width: 1200px; text-align: left; }
+.asny-v2 .asny-hero-photo .asny-hero-copy { align-items: flex-start; max-width: none; min-width: 0; }
+.asny-v2 .asny-hero-photo h1 { font-size: clamp(38px, 4vw, 58px); line-height: 1.08; font-weight: 500; text-wrap: balance; }
+.asny-v2 .asny-hero-photo .asny-v2-kicker { margin-bottom: 22px; font-size: 12px; color: #647061; }
+.asny-v2 .asny-hero-photo .asny-intro { margin: 24px 0 0; max-width: 51ch; color: #536254; font-size: 18px; line-height: 1.65; }
+.asny-v2 .asny-hero-photo .asny-hero-term { color: #526348; font-size: 16px; }
+.asny-v2 .asny-hero-photo .asny-note { margin: 14px 0 0; max-width: 390px; color: #697166; font-size: 12px; }
+.asny-v2 .asny-hero-photo .asny-benefits { gap: 14px; margin-top: 30px; }
+.asny-v2 .asny-hero-photo .asny-benefits li { color: #536254; font-size: 13px; padding: 0 10px 0 0; }
+.asny-v2 .asny-hero-photo .asny-benefits li + li { border-color: #203b3226; padding-left: 14px; }
+.asny-v2 .asny-hero-work { min-width: 0; margin: 0; }
+.asny-v2 .asny-hero-work > a { display: block; overflow: hidden; border-radius: 12px; background: #e6e0d5; }
+.asny-v2 .asny-hero-work img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 0; transition: transform .4s; }
+.asny-v2 .asny-hero-work figcaption { margin-top: 16px; font-size: 12px; color: #65705f; letter-spacing: .015em; }
+.asny-v2 .asny-hero-photo .asny-v2-sparks span { background: #bda260; }
+.asny-v2 #asny-cta .asny-cta-card { padding: 100px 64px 48px; background: #f6f3e9; }
+.asny-v2 .asny-cta-garland { position: absolute; top: -14px; inset-inline: 0; height: 150px; background: url('../images/new-year/v2/prices-fairy-lights-transparent.png') center top / auto 155px repeat-x; pointer-events: none; z-index: 0; }
+.asny-v2 .asny-cta-edge-decor { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
+.asny-v2 .asny-cta-edge-decor img { position: absolute; top: 14px; left: -28px; width: 115px; height: 185px; object-fit: contain; object-position: top left; opacity: .7; mask-image: linear-gradient(#000 50%, transparent); }
+.asny-v2 .asny-cta-edge-decor img + img { left: auto; right: -30px; width: 90px; height: 150px; transform: scaleX(-1); }
+.asny-v2 #asny-cta .asny-cta-art { width: min(100%, 235px); }
+@media (max-width: 1100px) and (min-width: 768px) {
+  .asny-v2 .asny-hero-photo .asny-hero-grid { gap: 32px; }
+  .asny-v2 .asny-hero-photo h1 { font-size: 42px; }
+  .asny-v2 .asny-hero-photo .asny-intro { font-size: 17px; }
+  .asny-v2 .asny-hero-photo .asny-benefits { grid-template-columns: 1fr; gap: 8px; }
+  .asny-v2 .asny-hero-photo .asny-benefits li + li { padding-left: 0; border: 0; }
+  .asny-v2 #asny-cta .asny-cta-card { padding-inline: 40px; }
+}
+@media (max-width: 767px) {
+  .asny-v2 .asny-hero-photo { padding: 42px 0 38px; }
+  .asny-v2 .asny-hero-photo .asny-hero-grid { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  .asny-v2 .asny-hero-photo h1 { font-size: clamp(34px, 8.5vw, 46px); }
+  .asny-v2 .asny-hero-photo .asny-intro { font-size: 17px; }
+  .asny-v2 .asny-hero-photo .asny-benefits { grid-template-columns: 1fr; gap: 8px; }
+  .asny-v2 .asny-hero-photo .asny-benefits li + li { padding-left: 0; border: 0; }
+  .asny-v2 .asny-hero-work { width: 100%; max-width: 560px; }
+  .asny-v2 #asny-cta .asny-cta-card { padding: 82px 26px 30px; }
+  .asny-v2 #asny-cta .asny-cta-art { width: 160px; }
+  .asny-v2 .asny-cta-edge-decor img { width: 75px; height: 120px; opacity: .5; }
+  .asny-v2 .asny-cta-edge-decor img + img { width: 65px; height: 110px; }
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) { .asny-v2 .asny-hero-work a:hover img { transform: scale(1.025); } }
 /* Responsive ribbon, section introductions and warm paper surface. */
 .asny-v2 .asny-v2-showcase { --v2-paper: #fffaf2; background: #fffaf2; }
 .asny-v2 #asny-prices .asny-price-copy p span { color: #686b69; }
@@ -837,4 +883,45 @@ body.asny-page-v2 .asny-seasonal-footer { margin: 0 !important; padding: 32px 0 
 @media (max-width: 950px) {
   .asny-v2 .asny-gift-ribbon > .asny-container { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(2, auto); gap: 14px 24px; height: auto; min-height: 0; padding-block: 22px; overflow: visible; }
   .asny-v2 .asny-gift-ribbon a { display: flex; align-items: center; justify-content: center; min-width: 0; padding: 5px 4px; font-size: clamp(18px, 2.8vw, 24px); white-space: normal; overflow-wrap: break-word; text-align: center; }
+}
+
+/* Viewport scroll belongs to the overlay; the panel itself never scrolls. */
+body.asny-page-v2.asny-modal-open { position: fixed; top: var(--asny-scroll-offset, 0px); left: 0; width: 100%; box-sizing: border-box; padding-right: var(--asny-scrollbar-gap, 0px); overflow: hidden; }
+.asny-v2 .asny-dialog { position: fixed; inset: 0; width: 100%; max-width: none; height: 100dvh; max-height: none; margin: 0; padding: 32px 20px; border: 0; border-radius: 0; background: transparent; box-shadow: none; overflow-x: hidden; overflow-y: auto; overscroll-behavior: contain; scrollbar-gutter: stable; }
+.asny-v2 .asny-dialog[open] { display: flex; flex-direction: column; }
+.asny-v2 .asny-modal-panel { position: relative; flex: none; width: 100%; max-width: 650px; margin: auto; padding: 42px; border: 1px solid #dedfd2; border-radius: 16px; background: #fffdf8; color: var(--v2-ink); box-shadow: 0 25px 90px #102d283d; overflow: visible; }
+.asny-v2 .asny-quiz-dialog > .asny-modal-panel { max-width: 760px; }
+.asny-v2 .asny-lightbox > .asny-modal-panel { max-width: 1000px; padding: 45px 20px 20px; }
+.asny-v2 .asny-lightbox img { max-height: none; height: auto; }
+.asny-v2 .asny-hero-photo { background: #083c36; color: #fffaf2; }
+.asny-v2 .asny-hero-photo .asny-v2-kicker { color: #becfc0; }
+.asny-v2 .asny-hero-photo .asny-intro { color: #d6e1d7; }
+.asny-v2 .asny-hero-photo .asny-hero-term { color: #e7cf97; }
+.asny-v2 .asny-hero-photo .asny-note, .asny-v2 .asny-hero-photo .asny-benefits li, .asny-v2 .asny-hero-photo .asny-hero-work figcaption { color: #b9ccbd; }
+.asny-v2 .asny-hero-photo .asny-benefits li + li { border-color: #ffffff26; }
+.asny-v2 .asny-hero-photo .asny-v2-sparks span { background: #ffe19a; }
+.asny-v2 #asny-cta .asny-cta-card { min-height: 430px; padding: 108px 150px 50px; }
+.asny-v2 .asny-cta-edge-decor img { top: -10px; left: -25px; width: min(20vw, 280px); height: 100%; object-fit: contain; object-position: top left; opacity: 1; mask-image: none; }
+.asny-v2 .asny-cta-edge-decor img + img { top: -10px; left: auto; right: -25px; width: min(20vw, 280px); height: 100%; object-position: top right; transform: none; }
+@media (max-width: 1024px) and (min-width: 768px) {
+  .asny-v2 #asny-cta .asny-cta-card { padding-inline: 90px; }
+}
+@media (max-width: 767px) {
+  .asny-v2 .asny-dialog { padding: 20px 10px; }
+  .asny-v2 .asny-modal-panel { padding: 44px 22px 25px; border-radius: 12px; }
+  .asny-v2 #asny-cta .asny-cta-card { padding: 130px 26px 32px; }
+  .asny-v2 .asny-cta-edge-decor img, .asny-v2 .asny-cta-edge-decor img + img { width: 120px; height: 210px; }
+  .asny-v2 .asny-cta-edge-decor img { left: -20px; }
+  .asny-v2 .asny-cta-edge-decor img + img { right: -20px; }
+}
+.asny-v2 #asny-cta .asny-cta-card { padding-left: 180px; padding-right: 150px; }
+@media (max-width: 1024px) and (min-width: 768px) { .asny-v2 #asny-cta .asny-cta-card { padding-inline: 110px; grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 767px) { .asny-v2 #asny-cta .asny-cta-card { padding: 185px 26px 32px; } }
+/* Restore the original festive frame behind the photo-led hero. */
+.asny-v2 .asny-hero-photo > .asny-v2-backdrop { display: block; opacity: .3; filter: saturate(.65); background-image: url('../images/new-year/v2/hero.jpg'); background-size: cover; background-position: center; }
+@media (min-width: 768px) and (max-width: 1024px) {
+  .asny-v2 .asny-hero-photo > .asny-v2-backdrop { background-image: url('../images/new-year/v2/hero-tablet.jpg'); }
+}
+@media (max-width: 767px) {
+  .asny-v2 .asny-hero-photo > .asny-v2-backdrop { background-image: url('../images/new-year/v2/hero-phone.jpg'); opacity: .34; }
 }
